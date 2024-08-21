@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A basic HTML template for starting web projects.">
+    <meta name="author" content="Pasichnyk Oleksandr">
+    <title id="title-name">WiseFOP: ERP system</title>
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Привіт, <span id="user-name">User</span> !</h1>
+        <h2>Сьогодні: <span id="today-date">Today</span></h2>
+        <h2>Система управління ресурсами сімейного бізнесу  <span id="system-name">WiseFOP</span>  готова, щоб розпочати нову операцію:</h2>
+        <nav>
+            <ul>
+                <li><a href="index_menuproducts.html">Товари</a></li>
+                <li><a href="index_menufinance.html">Фінанси</a></li>
+                <li><a href="https://my.cashalot.org.ua/" onclick="window.open(this.href, '_blank'); return false;">Бек-офіс Cashalot</a></li>
+
+
+                <li><a href="">Послуги</a></li>
+                <li><a href="">Налаштування</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <section>
+            <h3>* </h3>
+            <h3>* </h3>
+            <h3>Про нас</h3>
+            <p>Наша мета - Ваш фінансовий успіх!</p>
+        </section>
+        <section>
+            <h3>Напрямки діяльності:</h3>
+            <p></p>
+            <ul>
+                <li>Проектування і програмування додатків;</li>
+                <li>Підтримка користувачів;</li>
+                <li>Комплексне практичне консультування;</li>
+                <li>Торгівля канцтоварами та книгами.</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2021 Pasichnyks. All rights reserved.</p>
+        <p>Follow us on:
+            <a href="">Facebook</a> |
+            <a href="">Twitter</a> |
+            <a href="">Instagram</a>
+        </p>
+    </footer>
+
+    <!-- Link to external JavaScript file -->
+    
+    <script>
+
+        document.addEventListener('DOMContentLoaded', async (event) => {
+            try {
+                const response = await fetch('http://localhost:3000/api/users');
+                const user = await response.json();
+                //console.log (data.name)
+                const userNameElement = document.getElementById('user-name');
+                const todayDateElement =document.getElementById('today-date');
+                const today = new Date();
+                const formattedDate = today.toLocaleDateString('uk-UA', { day: 'numeric', month: 'long', year: 'numeric' });
+                todayDateElement.textContent = formattedDate;               
+                userNameElement.textContent = user[0].name;
+                
+            } catch (error) {
+                console.error('Error fetching collections:', error);
+            }
+        });
+    </script>
+</body>
+</html>

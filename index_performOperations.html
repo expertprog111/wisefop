@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A basic HTML template for starting web projects.">
+    <meta name="author" content="Pasichnyk Oleksandr">
+    <title>WiseFOP: ERP system</title>
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Господарські Операції Товарного обліку</h1>
+        <h4>
+            <label for="fop-combo">ФОП:</label>
+                <input type="text" id="fop-combo" disabled>
+                
+            <label for="storages-combo">Склад:</label>
+            <input type="text" id="storages-combo" list="storages-list" value="Головний">
+            <datalist id="storages-list">
+            </datalist>
+
+            <label for="supplier">Постачальник: </label>
+            <input type="text" id="supplier" disabled>
+        </h4>
+      
+
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <section>
+            <h2>
+                <label for="operations-combo">Виберіть операцію:</label>
+                <input type="text" id="operations-combo" list="operations-list">
+                <datalist id="operations-list">
+                </datalist>
+    
+                <input type="text" id="bar-code" class="searchparameters" placeholder="скануйте штрих код тут" autofocus>
+                <input type="text" id="vendor-code" class="searchparameters" placeholder="або введіть наш код">
+                <input type="text" id="supplier-code" class="searchparameters" placeholder="або код постачальника">
+                <input type="text" id="product-name" class="searchparameters" placeholder="або частину назви товару">
+                <!--<input type="text" id="date-from" class="searchparameters" placeholder="або дата початок періоду">
+                <input type="text" id="date-to" class="searchparameters" placeholder="дата кінець періоду">
+            -->
+    
+                <button id="start-operation">Виконати</button>
+                <button id="clear-search">Очистити</button>
+            </h2>
+            <p></p>
+            <div id="loading-spinner" style="display: none;">
+                <div class="spinner"></div>
+            </div>
+         </section>
+                    <section id="table-results" style="display: none">
+                        <h3>Результат пошуку:</h3>
+                        <table id="product-results">
+                            <thead>
+                                <tr>
+                                    <th>Штрихкод: </th>
+                                    <th>Код наш:</th>
+                                    <th>Основний постач.:</th>
+                                    <th>Код постач.:</th>
+                                    
+                                    <th>Назва:</th>
+                                    <th>Ціна:</th>
+                                    <th>Залишок:</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody></tbody> 
+                        </table>
+                    </section>
+        
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>___________________________________________________________________________________________________________________________</p>
+        <p>&copy; 2021 Pasichnyks. All rights reserved.</p>
+       
+    </footer>
+
+    <!-- Link to external JavaScript file -->
+    <script src="performOperation.js">
+
+    </script>
+</body>
+</html>
